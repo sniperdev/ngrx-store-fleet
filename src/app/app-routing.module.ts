@@ -9,7 +9,8 @@ const routes: Routes = [
   },
   {
     path: 'vehicles',
-    loadChildren: () => import('./pages/vehicles/vehicles.module').then(m => m.VehiclesModule)
+    loadChildren: () =>
+      import('./pages/vehicles/vehicles.module').then((m) => m.VehiclesModule)
   }
 ];
 

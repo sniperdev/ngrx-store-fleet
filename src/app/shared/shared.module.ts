@@ -5,9 +5,11 @@ import {ButtonModule} from "primeng/button";
 import { SidebarComponent } from './sidebar/sidebar.component';
 import {SidebarModule} from "primeng/sidebar";
 import {AsyncPipe, NgIf} from "@angular/common";
+import { CardComponent } from './card/card.component';
+import {CardModule} from "primeng/card";
 
 
-const COMPONENTS = [NavbarComponent, SidebarComponent];
+const COMPONENTS = [NavbarComponent, SidebarComponent, CardComponent];
 @NgModule({
   declarations: [
     COMPONENTS,
@@ -17,10 +19,11 @@ const COMPONENTS = [NavbarComponent, SidebarComponent];
     ButtonModule,
     SidebarModule,
     AsyncPipe,
-    NgIf
+    NgIf,
+    CardModule
   ],
   exports: [
-    COMPONENTS
+    COMPONENTS,
   ]
 })
 export class SharedModule {}
