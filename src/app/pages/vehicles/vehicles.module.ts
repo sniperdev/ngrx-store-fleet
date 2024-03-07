@@ -1,16 +1,17 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import {VehiclesComponent} from "./vehicles.component";
+import { VehiclesRoutingModule } from './vehicles-routing.module';
 
 
-const COMPONENTS = [VehiclesComponent]
+
 @NgModule({
   declarations: [
-    COMPONENTS,
+    VehiclesComponent
   ],
   imports: [
-    CommonModule
-  ],
-  exports: [COMPONENTS]
+    CommonModule,
+    VehiclesRoutingModule
+  ]
 })
 export class VehiclesModule { }
