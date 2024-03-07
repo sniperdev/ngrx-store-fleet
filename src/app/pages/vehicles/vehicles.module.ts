@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import {VehiclesComponent} from "./vehicles.component";
 import { VehiclesRoutingModule } from './vehicles-routing.module';
+import {SharedModule} from "../../shared/shared.module";
 
 
 
@@ -11,7 +12,8 @@ import { VehiclesRoutingModule } from './vehicles-routing.module';
   ],
   imports: [
     CommonModule,
-    VehiclesRoutingModule
+    VehiclesRoutingModule,
+    SharedModule
   ]
 })
 export class VehiclesModule { }
