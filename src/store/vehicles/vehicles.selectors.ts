@@ -8,7 +8,7 @@ export const selectVehicles = (state: IAppState) => state.vehicles;
 
 export const selectItems = createSelector(
   selectVehicles,
-  (state: IVehiclesState) => state.items
+  (state: IVehiclesState) => state.data
 );
 
 export const selectLoading = createSelector(

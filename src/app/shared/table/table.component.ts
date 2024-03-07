@@ -1,11 +1,16 @@
-import { Component } from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
+import {IVehicle} from "../../../store/vehicles/interfaces/vehicles.interface";
 
 @Component({
   selector: 'app-table',
   templateUrl: './table.component.html',
   styleUrls: ['./table.component.scss']
 })
-export class TableComponent {
+export class TableComponent implements OnInit{
   protected cols!: string[];
-  protected items!: any[];
+  @Input() items!: IVehicle[];
+
+  ngOnInit() {
+    this.cols = Object.keys(this.items[0]);
+  }
 }

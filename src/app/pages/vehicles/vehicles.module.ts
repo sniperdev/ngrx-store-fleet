@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import {VehiclesComponent} from "./vehicles.component";
 import { VehiclesRoutingModule } from './vehicles-routing.module';
 import {SharedModule} from "../../shared/shared.module";
+import {ProgressBarModule} from "primeng/progressbar";
 
 
 
@@ -10,10 +11,11 @@ import {SharedModule} from "../../shared/shared.module";
   declarations: [
     VehiclesComponent
   ],
-  imports: [
-    CommonModule,
-    VehiclesRoutingModule,
-    SharedModule
-  ]
+	imports: [
+		CommonModule,
+		VehiclesRoutingModule,
+		SharedModule,
+		ProgressBarModule
+	]
 })
 export class VehiclesModule { }

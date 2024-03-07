@@ -1,5 +1,5 @@
 import {createAction, props} from "@ngrx/store";
-import {IVehicle} from "./interfaces/vehicles.interface";
+import {IVehicleResponse} from "./interfaces/vehicles.interface";
 import {HttpErrorResponse} from "@angular/common/http";
 
 export const loadVehiclesList = createAction(
@@ -8,7 +8,7 @@ export const loadVehiclesList = createAction(
 
 export const loadVehiclesListSuccess = createAction(
   '[Vehicles] Load Vehicles List Success',
-  props<{ payload: IVehicle[] }>(),
+  props<{ payload: IVehicleResponse }>(),
 )
 
 export const loadVehiclesListError = createAction(

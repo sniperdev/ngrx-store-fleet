@@ -1,6 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {Observable} from "rxjs";
-import {IVehicle} from "../../../store/vehicles/interfaces/vehicles.interface";
+import {IVehicleResponse} from "../../../store/vehicles/interfaces/vehicles.interface";
 import {VehiclesFacade} from "../../../store/vehicles/vehicles.facade";
 
 @Component({
@@ -9,7 +9,8 @@ import {VehiclesFacade} from "../../../store/vehicles/vehicles.facade";
   styleUrls: ['./vehicles.component.scss']
 })
 export class VehiclesComponent implements OnInit{
-  public vehicles$: Observable<IVehicle[]> = this.vehiclesFacade.items$;
+  protected vehicles$: Observable<IVehicleResponse | null> = this.vehiclesFacade.data$;
+  protected loading$: Observable<boolean> = this.vehiclesFacade.loading$;
 
   constructor(private vehiclesFacade: VehiclesFacade){}
 
