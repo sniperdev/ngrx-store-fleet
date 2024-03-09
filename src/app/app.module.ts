@@ -1,6 +1,5 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import {SharedModule} from "./shared/shared.module";
@@ -11,6 +10,8 @@ import {vehiclesReducer} from "../store/vehicles/vehicles.reducers";
 import {EffectsModule} from "@ngrx/effects";
 import {VehiclesEffects} from "../store/vehicles/vehicles.effects";
 import {HttpClientModule} from "@angular/common/http";
+import {driversReducer} from "../store/drivers/drivers.reducers";
+import {DriversEffects} from "../store/drivers/drivers.effects";
 
 @NgModule({
   declarations: [
@@ -24,8 +25,9 @@ import {HttpClientModule} from "@angular/common/http";
     HttpClientModule,
     StoreModule.forRoot({
       vehicles: vehiclesReducer,
+      drivers: driversReducer,
     }),
-    EffectsModule.forRoot(VehiclesEffects),
+    EffectsModule.forRoot([VehiclesEffects, DriversEffects]),
     StoreDevtoolsModule.instrument({
       maxAge: 25,
       // logOnly: environment.production
