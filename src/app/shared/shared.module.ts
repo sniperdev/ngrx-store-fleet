@@ -4,7 +4,7 @@ import {MenubarModule} from "primeng/menubar";
 import {ButtonModule} from "primeng/button";
 import { SidebarComponent } from './sidebar/sidebar.component';
 import {SidebarModule} from "primeng/sidebar";
-import {AsyncPipe, NgForOf, NgIf} from "@angular/common";
+import {AsyncPipe, CommonModule} from "@angular/common";
 import { CardComponent } from './card/card.component';
 import {CardModule} from "primeng/card";
 import { TableComponent } from './table/table.component';
@@ -17,16 +17,15 @@ const COMPONENTS = [NavbarComponent, SidebarComponent, CardComponent];
     COMPONENTS,
     TableComponent,
   ],
-  imports: [
-    MenubarModule,
-    ButtonModule,
-    SidebarModule,
-    AsyncPipe,
-    NgIf,
-    CardModule,
-    TableModule,
-    NgForOf
-  ],
+	imports: [
+    CommonModule,
+		MenubarModule,
+		ButtonModule,
+		SidebarModule,
+		AsyncPipe,
+		CardModule,
+		TableModule,
+	],
   exports: [
     COMPONENTS,
     TableComponent,

@@ -1,5 +1,4 @@
 import {Component, Input, OnInit} from '@angular/core';
-import {IVehicle} from "../../../store/vehicles/interfaces/vehicles.interface";
 
 @Component({
   selector: 'app-table',
@@ -8,7 +7,7 @@ import {IVehicle} from "../../../store/vehicles/interfaces/vehicles.interface";
 })
 export class TableComponent implements OnInit{
   protected cols!: string[];
-  @Input() items!: IVehicle[];
+  @Input() items!: any[];
 
   ngOnInit() {
     this.cols = Object.keys(this.items[0]);
