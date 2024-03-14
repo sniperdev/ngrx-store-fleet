@@ -1,7 +1,7 @@
 <app-card title="Vehicles">
   <p-progressBar *ngIf="loading$ | async" mode="indeterminate" [style]="{ height: '6px' }"></p-progressBar>
   <ng-container *ngIf="vehicles$ | async as vehicles; else noVehicles">
-    <app-table [items]="vehicles.items"></app-table>
+    <app-table [items]="vehicles"></app-table>
   </ng-container>
   <ng-template #noVehicles>
     <p class="text-center">There are no vehicles in the database.</p>

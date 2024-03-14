@@ -16,8 +16,7 @@ export class VehiclesFacade {
   public success$: Observable<boolean> = this.store.select(VehiclesSelectors.selectSuccess);
   public error$: Observable<HttpErrorResponse | null> = this.store.select(VehiclesSelectors.selectError);
 
-  constructor(private store: Store<IAppState>) {
-  }
+  constructor(private store: Store<IAppState>) {}
 
   public loadVehiclesList(): void {
     this.store.dispatch(VehiclesActions.loadVehiclesList());

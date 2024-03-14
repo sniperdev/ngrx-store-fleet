@@ -1,9 +1,8 @@
-<p-table *ngIf="items.length" [paginator]="true" [rowsPerPageOptions]="[10, 25, 50]" currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries" [showCurrentPageReport]="true" [columns]="cols" [value]="items.slice()" [tableStyle]="{ 'min-width': '50rem' }">
+<p-table [columns]="cols" [value]="items" [tableStyle]="{ 'min-width': '50rem' }">
   <ng-template pTemplate="header" let-columns>
     <tr>
-      <th *ngFor="let col of columns" pSortableColumn="{{col}}" style="width:20%">
+      <th *ngFor="let col of columns">
         {{ col }}
-        <p-sortIcon field="{{col}}"></p-sortIcon>
       </th>
     </tr>
   </ng-template>
