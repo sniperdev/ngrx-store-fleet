@@ -13,7 +13,7 @@ export class TableComponent<T extends object> {
   set items(items: T[]) {
     this._items = items;
     if (items && items.length > 0) {
-      let colsValues: string[] = Object.keys(items[0]);
+      let colsValues: string[] = Object.keys(items[0]).filter((col: string) => col !== 'id');
       this.cols = colsValues.map((col: string) => {
         let formattedCol = col.charAt(0).toUpperCase() + col.slice(1);
         formattedCol = formattedCol.replace(/([a-z])([A-Z])/g, '$1 $2');
