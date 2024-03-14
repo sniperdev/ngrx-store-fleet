@@ -1,9 +1,7 @@
 <ng-container *ngIf="(sidebarVisible$ | async) as sidebarVisible">
   <p-sidebar [visible]="sidebarVisible" (onHide)="handleCloseSidebar()">
     <h3>Sidebar</h3>
-    <p>
-      Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-      Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
-    </p>
+    <button (click)="navigateTo('vehicles')" pButton type="button" label="Vehicles" class="p-button-outlined block my-2"></button>
+    <button (click)="navigateTo('drivers')" pButton type="button" label="Drivers" class="p-button-outlined block my-2"></button>
   </p-sidebar>
 </ng-container>

@@ -11,6 +11,11 @@ const routes: Routes = [
     path: 'vehicles',
     loadChildren: () =>
       import('./pages/vehicles/vehicles.module').then((m) => m.VehiclesModule)
+  },
+  {
+    path: 'drivers',
+    loadChildren: () =>
+      import('./pages/drivers/drivers.module').then((m) => m.DriversModule)
   }
 ];
 

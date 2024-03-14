@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import {SidebarService} from "./sidebar.service";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-sidebar',
@@ -9,9 +10,14 @@ import {SidebarService} from "./sidebar.service";
 export class SidebarComponent {
   protected sidebarVisible$ = this.sidebarService.getSidebarVisible();
 
-  constructor(private sidebarService: SidebarService) {}
+  constructor(private sidebarService: SidebarService, private router: Router) {}
 
   protected handleCloseSidebar(): void{
     this.sidebarService.setSidebarVisible(false);
+  }
+
+  protected navigateTo(url: string): void {
+    this.sidebarService.setSidebarVisible(false);
+    this.router.navigate([url]);
   }
 }
