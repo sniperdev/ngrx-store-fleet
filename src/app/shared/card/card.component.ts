@@ -7,5 +7,5 @@ import {Component, Input} from '@angular/core';
 })
 export class CardComponent {
   @Input() title!: string;
-  @Input() width: number = 1000;
+  @Input() width: number = 1500;
 }
