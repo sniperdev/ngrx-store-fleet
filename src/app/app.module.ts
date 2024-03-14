@@ -12,6 +12,8 @@ import {VehiclesEffects} from "../store/vehicles/vehicles.effects";
 import {HttpClientModule} from "@angular/common/http";
 import {driversReducer} from "../store/drivers/drivers.reducers";
 import {DriversEffects} from "../store/drivers/drivers.effects";
+import {ordersReducer} from "../store/orders/orders.reducers";
+import {OrdersEffects} from "../store/orders/orders.effects";
 
 @NgModule({
   declarations: [
@@ -26,8 +28,9 @@ import {DriversEffects} from "../store/drivers/drivers.effects";
     StoreModule.forRoot({
       vehicles: vehiclesReducer,
       drivers: driversReducer,
+      orders: ordersReducer,
     }),
-    EffectsModule.forRoot([VehiclesEffects, DriversEffects]),
+    EffectsModule.forRoot([VehiclesEffects, DriversEffects, OrdersEffects]),
     StoreDevtoolsModule.instrument({
       maxAge: 25,
       // logOnly: environment.production
