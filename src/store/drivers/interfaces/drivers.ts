@@ -7,12 +7,3 @@ export interface IDriver {
   birthDate: string;
   drivingLicenseNumber: string;
 }
-
-export interface IDriversResponse {
-  items: IDriver[];
-  info: {
-    page: number;
-    limit: number;
-    totalResults: number;
-  };
-}

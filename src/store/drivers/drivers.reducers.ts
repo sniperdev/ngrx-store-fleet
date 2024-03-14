@@ -1,17 +1,17 @@
 import {HttpErrorResponse} from "@angular/common/http";
-import {IDriversResponse} from "./interfaces/drivers";
+import {IDriver} from "./interfaces/drivers";
 import {createReducer, on} from "@ngrx/store";
 import * as DriversActions from "./drivers.actions";
 
-export interface IDriversState {
-  data: IDriversResponse | null;
+export interface IDriverState {
+  data: IDriver[];
   loading: boolean;
   success: boolean;
   error: HttpErrorResponse | null;
 }
 
-const initialState: IDriversState = {
-  data: null,
+const initialState: IDriverState = {
+  data: [],
   loading: false,
   success: false,
   error: null,
@@ -23,7 +23,7 @@ export const driversReducer = createReducer(
     DriversActions.loadDriversList,
     state =>({
       ...state,
-      data: null,
+      data: [],
       loading: true,
       success: false,
       error: null,
@@ -50,7 +50,7 @@ export const driversReducer = createReducer(
     DriversActions.loadDriversListClear,
     state => ({
       ...state,
-      data: null,
+      data: [],
       loading: false,
       success: false,
       error: null,

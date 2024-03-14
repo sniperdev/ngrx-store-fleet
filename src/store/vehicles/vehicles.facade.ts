@@ -3,7 +3,7 @@ import {Store} from "@ngrx/store";
 import {IAppState} from "../app.state";
 import {HttpErrorResponse} from "@angular/common/http";
 import {Observable} from "rxjs";
-import {IVehicleResponse} from "./interfaces/vehicles.interface";
+import {IVehicle} from "./interfaces/vehicles.interface";
 import * as VehiclesActions from './vehicles.actions';
 import * as VehiclesSelectors from './vehicles.selectors';
 
@@ -11,7 +11,7 @@ import * as VehiclesSelectors from './vehicles.selectors';
   providedIn: 'root'
 })
 export class VehiclesFacade {
-  public data$: Observable<IVehicleResponse | null> = this.store.select(VehiclesSelectors.selectItems);
+  public data$: Observable<IVehicle[]> = this.store.select(VehiclesSelectors.selectItems);
   public loading$: Observable<boolean> = this.store.select(VehiclesSelectors.selectLoading);
   public success$: Observable<boolean> = this.store.select(VehiclesSelectors.selectSuccess);
   public error$: Observable<HttpErrorResponse | null> = this.store.select(VehiclesSelectors.selectError);

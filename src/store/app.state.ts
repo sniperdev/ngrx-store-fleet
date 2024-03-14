@@ -1,7 +1,7 @@
 import { IVehiclesState } from './vehicles/vehicles.reducers';
-import {IDriversState} from "./drivers/drivers.reducers";
+import {IDriverState} from "./drivers/drivers.reducers";
 
 export interface IAppState {
   vehicles: IVehiclesState;
-  drivers: IDriversState;
+  drivers: IDriverState;
 }

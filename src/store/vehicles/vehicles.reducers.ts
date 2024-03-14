@@ -1,17 +1,17 @@
 import { createReducer, on } from '@ngrx/store';
 import { HttpErrorResponse } from '@angular/common/http';
 import * as VehiclesActions from './vehicles.actions';
-import {IVehicleResponse} from "./interfaces/vehicles.interface";
+import {IVehicle} from "./interfaces/vehicles.interface";
 
 export interface IVehiclesState {
-  data: IVehicleResponse | null;
+  data: IVehicle[];
   loading: boolean;
   success: boolean;
   error: HttpErrorResponse | null;
 }
 
 const initialState: IVehiclesState = {
-  data: null,
+  data: [],
   loading: false,
   success: false,
   error: null,
@@ -23,7 +23,7 @@ export const vehiclesReducer = createReducer(
     VehiclesActions.loadVehiclesList,
     state => ({
       ...state,
-      data: null,
+      data: [],
       loading: true,
       success: false,
       error: null,
@@ -50,7 +50,7 @@ export const vehiclesReducer = createReducer(
     VehiclesActions.loadVehiclesListClear,
     state => ({
       ...state,
-      data: null,
+      data: [],
       loading: false,
       success: false,
       error: null,

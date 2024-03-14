@@ -3,7 +3,7 @@ import { Actions, createEffect, ofType } from '@ngrx/effects';
 import { VehiclesService } from './vehicles.service';
 import { catchError, map, of, switchMap } from 'rxjs';
 import * as VehiclesActions from './vehicles.actions';
-import {IVehicleResponse} from "./interfaces/vehicles.interface";
+import {IVehicle} from "./interfaces/vehicles.interface";
 
 @Injectable()
 export class VehiclesEffects {
@@ -17,7 +17,7 @@ export class VehiclesEffects {
       ofType(VehiclesActions.loadVehiclesList),
       switchMap(() =>
         this.vehiclesService.loadVehiclesList().pipe(
-          map((res: IVehicleResponse) => VehiclesActions.loadVehiclesListSuccess({ payload: res })),
+          map((res: IVehicle[]) => VehiclesActions.loadVehiclesListSuccess({ payload: res })),
           catchError((err) => of(VehiclesActions.loadVehiclesListError({ error: err })))
         )
       )

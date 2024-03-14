@@ -20,12 +20,3 @@ export interface IVehicle {
   status: VehicleStatus,
   driverId: string;
 }
-
-export interface IVehicleResponse {
-  items: IVehicle[];
-  info: {
-    page: number;
-    limit: number;
-    totalResults: number;
-  };
-}
