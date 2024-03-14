@@ -1,7 +1,9 @@
 <ng-container *ngIf="(sidebarVisible$ | async) as sidebarVisible">
   <p-sidebar [visible]="sidebarVisible" (onHide)="handleCloseSidebar()">
     <h3>Sidebar</h3>
-    <button (click)="navigateTo('vehicles')" pButton type="button" label="Vehicles" class="p-button-outlined block my-2"></button>
-    <button (click)="navigateTo('drivers')" pButton type="button" label="Drivers" class="p-button-outlined block my-2"></button>
+    <div class="flex flex-column gap-3">
+      <button (click)="navigateTo('vehicles')" pButton type="button" label="Vehicles" class="p-button-outlined"></button>
+      <button (click)="navigateTo('drivers')" pButton type="button" label="Drivers" class="p-button-outlined"></button>
+    </div>
   </p-sidebar>
 </ng-container>
