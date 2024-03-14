@@ -1,0 +1,9 @@
+<app-card [title]="title">
+  <p-progressBar *ngIf="loading$ | async" mode="indeterminate" [style]="{ height: '6px' }"></p-progressBar>
+  <ng-container *ngIf="items$ | async as items; else noItems">
+    <app-table [items]="items"></app-table>
+  </ng-container>
+  <ng-template #noItems>
+    <p class="text-center">{{noItemsText}}</p>
+  </ng-template>
+</app-card>

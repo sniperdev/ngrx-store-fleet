@@ -9,6 +9,8 @@ import { CardComponent } from './card/card.component';
 import {CardModule} from "primeng/card";
 import { TableComponent } from './table/table.component';
 import {TableModule} from "primeng/table";
+import { PagecardComponent } from './pagecard/pagecard.component';
+import {FileUploadModule} from "primeng/fileupload";
 
 
 const COMPONENTS = [NavbarComponent, SidebarComponent, CardComponent];
@@ -16,19 +18,22 @@ const COMPONENTS = [NavbarComponent, SidebarComponent, CardComponent];
   declarations: [
     COMPONENTS,
     TableComponent,
+    PagecardComponent,
   ],
-	imports: [
+  imports: [
     CommonModule,
-		MenubarModule,
-		ButtonModule,
-		SidebarModule,
-		AsyncPipe,
-		CardModule,
-		TableModule,
-	],
+    MenubarModule,
+    ButtonModule,
+    SidebarModule,
+    AsyncPipe,
+    CardModule,
+    TableModule,
+    FileUploadModule,
+  ],
   exports: [
     COMPONENTS,
     TableComponent,
+    PagecardComponent,
   ]
 })
 export class SharedModule {}

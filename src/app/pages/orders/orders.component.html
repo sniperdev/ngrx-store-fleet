@@ -1,1 +1,6 @@
-<p>orders works!</p>
+<app-pagecard
+  title="Orders"
+  [items$]="orders$"
+  [loading$]="loading$"
+  noItemsText="There are no orders in the database.">
+</app-pagecard>
