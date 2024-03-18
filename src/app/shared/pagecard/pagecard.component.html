@@ -1,4 +1,8 @@
 <app-card [title]="title">
+  <div class="mb-4 flex column-gap-2">
+    <p-button (click)="downloadFilePdf()">Pobierz PDF</p-button>
+    <p-button (click)="openFilePdf()">Otwórz PDF</p-button>
+  </div>
   <p-progressBar *ngIf="loading$ | async" mode="indeterminate" [style]="{ height: '6px' }"></p-progressBar>
   <ng-container *ngIf="items$ | async as items; else noItems">
     <app-table [items]="items"></app-table>
