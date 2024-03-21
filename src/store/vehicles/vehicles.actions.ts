@@ -19,3 +19,22 @@ export const loadVehiclesListError = createAction(
 export const loadVehiclesListClear = createAction(
   '[Vehicles] Vehicles List Clear',
 )
+
+export const loadSingleVehicle = createAction(
+  '[Vehicles] Load Single Vehicle',
+  props<{ id:string }>()
+)
+
+export const loadSingleVehicleSuccess = createAction(
+  '[Vehicles] Load Single Vehicle Success',
+  props<{ payload: IVehicle }>(),
+)
+
+export const loadSingleVehicleError = createAction(
+  '[Vehicles] Load Single Vehicle Error',
+  props<{ error: HttpErrorResponse }>()
+)
+
+export const loadSingleVehicleClear = createAction(
+  '[Vehicles] Single Vehicle Clear',
+)
