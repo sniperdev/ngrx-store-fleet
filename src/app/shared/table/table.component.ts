@@ -10,6 +10,12 @@ import {ConfirmationService} from "primeng/api";
 export class TableComponent<T extends object> {
   protected cols!: any;
   private _items!: T[];
+  private _title!: string;
+
+  @Input()
+  set title(title: string) {
+    this._title = title.toLowerCase();
+  }
 
   @Input()
   set items(items: T[]) {
@@ -31,7 +37,7 @@ export class TableComponent<T extends object> {
   constructor(private router: Router, private confirmationService: ConfirmationService) {}
 
   protected openDetailsPage(id: string) {
-    this.router.navigate([`/vehicles/${id}`]);
+    this.router.navigate([`/${this._title}/${id}`]);
   }
 
   protected deleteItem(id: string, event: Event) {
@@ -47,5 +53,4 @@ export class TableComponent<T extends object> {
       }
     });
   }
-
 }
