@@ -9,8 +9,9 @@ import {VehiclesFacade} from "../../../store/vehicles/vehicles.facade";
   styleUrls: ['./vehicles.component.scss']
 })
 export class VehiclesComponent implements OnInit, OnDestroy{
-  protected vehicles$: Observable<IVehicle[]> = this.vehiclesFacade.data$;
-  protected loading$: Observable<boolean> = this.vehiclesFacade.loading$;
+  protected vehicles$: Observable<IVehicle[]> = this.vehiclesFacade.vehiclesData$;
+  protected loading$: Observable<boolean> = this.vehiclesFacade.vehiclesLoading$;
+
 
   constructor(private vehiclesFacade: VehiclesFacade){}
 

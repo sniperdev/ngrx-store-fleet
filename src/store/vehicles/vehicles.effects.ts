@@ -1,7 +1,8 @@
 import { Injectable } from '@angular/core';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
 import { VehiclesService } from './vehicles.service';
-import { catchError, map, of, switchMap } from 'rxjs';
+import {catchError, map, of, switchMap} from 'rxjs';
+import { tap } from 'rxjs/operators';
 import * as VehiclesActions from './vehicles.actions';
 import {IVehicle} from "./interfaces/vehicles.interface";
 
@@ -22,4 +23,14 @@ export class VehiclesEffects {
         )
       )
     ));
+
+  loadSingleVehicle$ = createEffect(() =>
+    this.actions$.pipe(
+      ofType(VehiclesActions.loadSingleVehicle),
+      switchMap((action)=>
+        this.vehiclesService.loadSingleVehicle(action.id).pipe(
+          map((res: IVehicle) => VehiclesActions.loadSingleVehicleSuccess({ payload: res })),
+          catchError((err) => of(VehiclesActions.loadSingleVehicleError({ error: err })))
+      ))
+    ))
 }

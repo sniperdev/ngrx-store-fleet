@@ -11,10 +11,15 @@ import * as VehiclesSelectors from './vehicles.selectors';
   providedIn: 'root'
 })
 export class VehiclesFacade {
-  public data$: Observable<IVehicle[]> = this.store.select(VehiclesSelectors.selectItems);
-  public loading$: Observable<boolean> = this.store.select(VehiclesSelectors.selectLoading);
-  public success$: Observable<boolean> = this.store.select(VehiclesSelectors.selectSuccess);
-  public error$: Observable<HttpErrorResponse | null> = this.store.select(VehiclesSelectors.selectError);
+  public vehiclesData$: Observable<IVehicle[]> = this.store.select(VehiclesSelectors.selectVehiclesItems);
+  public vehiclesLoading$: Observable<boolean> = this.store.select(VehiclesSelectors.selectVehiclesLoading);
+  public vehiclesSuccess: Observable<boolean> = this.store.select(VehiclesSelectors.selectVehiclesSuccess);
+  public vehiclesError$: Observable<HttpErrorResponse | null> = this.store.select(VehiclesSelectors.selectVehiclesError);
+
+  public singleVehicleData$: Observable<IVehicle | null> = this.store.select(VehiclesSelectors.selectSingleVehicle);
+  public singleVehicleLoading$: Observable<boolean> = this.store.select(VehiclesSelectors.selectSingleVehicleLoading);
+  public singleVehicleSuccess$: Observable<boolean> = this.store.select(VehiclesSelectors.selectSingleVehicleSuccess);
+  public singleVehicleError$: Observable<HttpErrorResponse | null> = this.store.select(VehiclesSelectors.selectSingleVehicleError);
 
   constructor(private store: Store<IAppState>) {}
 
@@ -24,5 +29,13 @@ export class VehiclesFacade {
 
   public clearVehiclesList(): void {
     this.store.dispatch(VehiclesActions.loadVehiclesListClear());
+  }
+
+  public loadSingleVehicle(id: string): void {
+    this.store.dispatch(VehiclesActions.loadSingleVehicle({id}));
+  }
+
+  public clearSingleVehicle(): void {
+    this.store.dispatch(VehiclesActions.loadSingleVehicleClear());
   }
 }

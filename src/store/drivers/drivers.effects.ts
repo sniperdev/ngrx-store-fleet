@@ -12,7 +12,7 @@ export class DriversEffects{
     private driversService: DriversService,
   ){}
 
-  loadVehiclesList$ = createEffect(() =>
+  loadDriversList$ = createEffect(() =>
     this.actions$.pipe(
       ofType(DriversActions.loadDriversList),
       switchMap(() =>
