@@ -14,6 +14,7 @@ import {driversReducer} from "../store/drivers/drivers.reducers";
 import {DriversEffects} from "../store/drivers/drivers.effects";
 import {ordersReducer} from "../store/orders/orders.reducers";
 import {OrdersEffects} from "../store/orders/orders.effects";
+import {ConfirmationService} from "primeng/api";
 
 @NgModule({
   declarations: [
@@ -35,8 +36,9 @@ import {OrdersEffects} from "../store/orders/orders.effects";
       maxAge: 25,
       // logOnly: environment.production
     }),
+
   ],
-  providers: [SharedModule],
+  providers: [SharedModule, ConfirmationService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

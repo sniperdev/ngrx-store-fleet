@@ -11,6 +11,10 @@ import { TableComponent } from './table/table.component';
 import {TableModule} from "primeng/table";
 import { PagecardComponent } from './pagecard/pagecard.component';
 import {FileUploadModule} from "primeng/fileupload";
+import {InputTextModule} from "primeng/inputtext";
+import {FormsModule} from "@angular/forms";
+import {RippleModule} from "primeng/ripple";
+import {ConfirmPopupModule} from "primeng/confirmpopup";
 
 
 const COMPONENTS = [NavbarComponent, SidebarComponent, CardComponent];
@@ -29,6 +33,10 @@ const COMPONENTS = [NavbarComponent, SidebarComponent, CardComponent];
     CardModule,
     TableModule,
     FileUploadModule,
+    InputTextModule,
+    FormsModule,
+    RippleModule,
+    ConfirmPopupModule,
   ],
   exports: [
     COMPONENTS,

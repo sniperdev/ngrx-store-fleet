@@ -1,4 +1,6 @@
 import {Component, Input} from '@angular/core';
+import {Router} from "@angular/router";
+import {ConfirmationService} from "primeng/api";
 
 @Component({
   selector: 'app-table',
@@ -25,4 +27,25 @@ export class TableComponent<T extends object> {
   get items(): T[] {
     return this._items;
   }
+
+  constructor(private router: Router, private confirmationService: ConfirmationService) {}
+
+  protected openDetailsPage(id: string) {
+    this.router.navigate([`/vehicles/${id}`]);
+  }
+
+  protected deleteItem(id: string, event: Event) {
+    this.confirmationService.confirm({
+      target: event.target as EventTarget,
+      message: 'Are you sure you want to delete this item?',
+      icon: 'pi pi-exclamation-triangle',
+      accept: () => {
+
+      },
+      reject: () => {
+
+      }
+    });
+  }
+
 }

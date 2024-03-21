@@ -8,16 +8,18 @@
     </tr>
   </ng-template>
   <ng-template pTemplate="body" let-rowData let-columns="columns">
-    <tr>
+    <tr [pEditableRow]="rowData">
       <td *ngFor="let col of columns">
         {{ rowData[col.field] }}
       </td>
       <td>
-        <button pButton icon="pi pi-external-link" class="p-button-rounded p-button-primary m-2"></button>
+        <button pButton icon="pi pi-external-link" class="p-button-rounded p-button-primary m-2" (click)="openDetailsPage(rowData.id)"></button>
         <button pButton icon="pi pi-pencil" class="p-button-rounded p-button-secondary m-2"></button>
-        <button pButton icon="pi pi-trash" class="p-button-rounded p-button-danger m-2"></button>
+        <p-confirmPopup></p-confirmPopup>
+        <button pButton icon="pi pi-trash" class="p-button-rounded p-button-danger m-2" (click)="deleteItem(rowData.id, $event)"></button>
       </td>
     </tr>
   </ng-template>
 </p-table>
+
 

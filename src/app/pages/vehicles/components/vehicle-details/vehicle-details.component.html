@@ -1,0 +1,18 @@
+<app-card title="Vehicle details">
+  <div class="flex column-gap-6">
+    <p-button icon="pi pi-arrow-left" styleClass="p-button-rounded p-button-text" (click)="returnToList()"></p-button>
+    <div class="w-full mt-4">
+      <p-progressBar *ngIf="loading$ | async" mode="indeterminate" [style]="{ height: '6px' }"></p-progressBar>
+      <ng-container *ngIf="vehicle$ | async as vehicle">
+        <div class="flex flex-column h-1/3">
+          <span>Brand: {{ vehicle.brand }}</span>
+          <span>Model: {{ vehicle.model }}</span>
+          <span>Year: {{ vehicle.year }}</span>
+          <span>Registration number: {{ vehicle.registrationNumber }}</span>
+          <span>Status: <span [ngClass]="vehicle.status === 'Available'? 'text-green-500' : 'text-red-600'" class="font-bold">{{ vehicle.status }}</span></span>
+          <span>Driver: {{ vehicle.driverId ? vehicle.driverId : 'There is no driver' }}</span>
+        </div>
+      </ng-container>
+    </div>
+  </div>
+</app-card>
