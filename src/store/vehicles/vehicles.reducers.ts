@@ -158,4 +158,39 @@ export const vehiclesReducer = createReducer(
       }
     })
   ),
+
+
+  on(
+    VehiclesActions.deleteVehicle,
+    state => ({
+      ...state,
+      delete: {
+        ...state.delete,
+        loading: true,
+      }
+    })
+  ),
+  on(
+    VehiclesActions.deleteVehicleSuccess,
+    state => ({
+      ...state,
+      delete: {
+        ...state.delete,
+        loading: false,
+        success: true,
+      }
+    })
+  ),
+  on(
+    VehiclesActions.deleteVehicleError,
+    (state, action) => ({
+      ...state,
+      delete: {
+        ...state.delete,
+        loading: false,
+        error: action.error,
+      }
+    })
+  ),
+
 );

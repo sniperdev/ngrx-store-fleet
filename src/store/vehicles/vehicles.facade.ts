@@ -21,6 +21,11 @@ export class VehiclesFacade {
   public singleVehicleSuccess$: Observable<boolean> = this.store.select(VehiclesSelectors.selectSingleVehicleSuccess);
   public singleVehicleError$: Observable<HttpErrorResponse | null> = this.store.select(VehiclesSelectors.selectSingleVehicleError);
 
+
+  public vehicleDeleteLoading$: Observable<boolean> = this.store.select(VehiclesSelectors.selectVehiclesDeleteLoading);
+  public vehicleDeleteSuccess$: Observable<boolean> = this.store.select(VehiclesSelectors.selectVehiclesDeleteSuccess);
+  public vehicleDeleteError$: Observable<HttpErrorResponse | null> = this.store.select(VehiclesSelectors.selectVehiclesDeleteError);
+
   constructor(private store: Store<IAppState>) {}
 
   public loadVehiclesList(): void {
@@ -37,5 +42,9 @@ export class VehiclesFacade {
 
   public clearSingleVehicle(): void {
     this.store.dispatch(VehiclesActions.loadSingleVehicleClear());
+  }
+
+  public deleteVehicle(id: string): void {
+    this.store.dispatch(VehiclesActions.deleteVehicle({id}));
   }
 }

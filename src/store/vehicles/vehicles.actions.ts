@@ -38,3 +38,22 @@ export const loadSingleVehicleError = createAction(
 export const loadSingleVehicleClear = createAction(
   '[Vehicles] Single Vehicle Clear',
 )
+
+
+export const deleteVehicle = createAction(
+  '[Vehicles] Delete Vehicle',
+  props<{ id: string }>()
+)
+
+export const deleteVehicleSuccess = createAction(
+  '[Vehicles] Delete Vehicle Success',
+)
+
+export const deleteVehicleError = createAction(
+  '[Vehicles] Delete Vehicle Error',
+  props<{ error: HttpErrorResponse }>()
+)
+
+export const reloadVehiclesList = createAction(
+  "[Vehicles] Reload Vehicles List"
+)

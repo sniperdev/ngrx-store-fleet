@@ -25,4 +25,10 @@ export class VehiclesService{
 
     return this.http.get<IVehicle>(url);
   }
+
+  public deleteVehicle(id: string): Observable<any>{
+    const url = `${this.apiUrl}/vehicles/delete/${id}`;
+
+    return this.http.delete(url);
+  }
 }

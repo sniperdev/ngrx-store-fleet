@@ -45,3 +45,18 @@ export const selectSingleVehicleError = createSelector(
   selectVehicles,
   (state: IVehiclesState) => state.details.error
 );
+
+export const selectVehiclesDeleteLoading = createSelector(
+  selectVehicles,
+  (state: IVehiclesState) => state.delete.loading
+);
+
+export const selectVehiclesDeleteSuccess = createSelector(
+  selectVehicles,
+  (state: IVehiclesState) => state.delete.success
+);
+
+export const selectVehiclesDeleteError = createSelector(
+  selectVehicles,
+  (state: IVehiclesState) => state.delete.error
+);

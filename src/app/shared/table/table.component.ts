@@ -1,6 +1,7 @@
 import {Component, Input} from '@angular/core';
 import {Router} from "@angular/router";
 import {ConfirmationService} from "primeng/api";
+import {VehiclesFacade} from "../../../store/vehicles/vehicles.facade";
 
 @Component({
   selector: 'app-table',
@@ -34,7 +35,7 @@ export class TableComponent<T extends object> {
     return this._items;
   }
 
-  constructor(private router: Router, private confirmationService: ConfirmationService) {}
+  constructor(private router: Router, private confirmationService: ConfirmationService, private vehiclesFacade: VehiclesFacade) {}
 
   protected openDetailsPage(id: string) {
     this.router.navigate([`/${this._title}/${id}`]);
@@ -46,7 +47,7 @@ export class TableComponent<T extends object> {
       message: 'Are you sure you want to delete this item?',
       icon: 'pi pi-exclamation-triangle',
       accept: () => {
-
+        this.vehiclesFacade.deleteVehicle(id);
       },
       reject: () => {
 

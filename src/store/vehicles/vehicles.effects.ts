@@ -2,7 +2,6 @@ import { Injectable } from '@angular/core';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
 import { VehiclesService } from './vehicles.service';
 import {catchError, map, of, switchMap} from 'rxjs';
-import { tap } from 'rxjs/operators';
 import * as VehiclesActions from './vehicles.actions';
 import {IVehicle} from "./interfaces/vehicles.interface";
 
@@ -33,4 +32,21 @@ export class VehiclesEffects {
           catchError((err) => of(VehiclesActions.loadSingleVehicleError({ error: err })))
       ))
     ))
+
+  deleteVehicle$ = createEffect(() =>
+    this.actions$.pipe(
+      ofType(VehiclesActions.deleteVehicle),
+      switchMap((action)=>
+        this.vehiclesService.deleteVehicle(action.id).pipe(
+          map(() => VehiclesActions.deleteVehicleSuccess()),
+          catchError((err) => of(VehiclesActions.deleteVehicleError({ error: err })))
+      ))
+    ))
+
+  deleteVehicleSuccess$ = createEffect(() =>
+    this.actions$.pipe(
+      ofType(VehiclesActions.deleteVehicleSuccess),
+      map(() => VehiclesActions.loadVehiclesList())
+    )
+  );
 }
