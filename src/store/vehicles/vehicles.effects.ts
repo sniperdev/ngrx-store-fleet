@@ -29,7 +29,7 @@ export class VehiclesEffects {
       ofType(VehiclesActions.loadSingleVehicle),
       switchMap((action)=>
         this.vehiclesService.loadSingleVehicle(action.id).pipe(
-          tap((res: IVehicle) => VehiclesActions.loadSingleVehicleSuccess({ payload: res })),
+          map((res: IVehicle) => VehiclesActions.loadSingleVehicleSuccess({ payload: res })),
           catchError((err) => of(VehiclesActions.loadSingleVehicleError({ error: err })))
       ))
     ))

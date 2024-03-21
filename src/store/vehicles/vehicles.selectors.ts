@@ -6,22 +6,42 @@ import {createSelector} from "@ngrx/store";
 export const selectVehicles = (state: IAppState) => state.vehicles;
 
 
-export const selectItems = createSelector(
+export const selectVehiclesItems = createSelector(
   selectVehicles,
-  (state: IVehiclesState) => state.data
+  (state: IVehiclesState) => state.list.items
 );
 
-export const selectLoading = createSelector(
+export const selectVehiclesLoading = createSelector(
   selectVehicles,
-  (state: IVehiclesState) => state.loading
+  (state: IVehiclesState) => state.list.loading
 );
 
-export const selectSuccess = createSelector(
+export const selectVehiclesSuccess = createSelector(
   selectVehicles,
-  (state: IVehiclesState) => state.success
+  (state: IVehiclesState) => state.list.success
 );
 
-export const selectError = createSelector(
+export const selectVehiclesError = createSelector(
   selectVehicles,
-  (state: IVehiclesState) => state.error
+  (state: IVehiclesState) => state.list.error
+);
+
+export const selectSingleVehicle = createSelector(
+  selectVehicles,
+  (state: IVehiclesState) => state.details.item
+);
+
+export const selectSingleVehicleLoading = createSelector(
+  selectVehicles,
+  (state: IVehiclesState) => state.details.loading
+);
+
+export const selectSingleVehicleSuccess = createSelector(
+  selectVehicles,
+  (state: IVehiclesState) => state.details.success
+);
+
+export const selectSingleVehicleError = createSelector(
+  selectVehicles,
+  (state: IVehiclesState) => state.details.error
 );

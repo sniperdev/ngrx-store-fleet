@@ -23,6 +23,6 @@ export class VehiclesService{
   public loadSingleVehicle(id: string): Observable<IVehicle>{
     const url = `${this.apiUrl}/vehicles/${id}`;
 
-    return this.http.get<IVehicle>(url)
+    return this.http.get<IVehicle>(url);
   }
 }

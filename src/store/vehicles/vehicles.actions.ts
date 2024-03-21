@@ -22,7 +22,7 @@ export const loadVehiclesListClear = createAction(
 
 export const loadSingleVehicle = createAction(
   '[Vehicles] Load Single Vehicle',
-  props<{ id:string }>()
+  props<{ id: string }>()
 )
 
 export const loadSingleVehicleSuccess = createAction(
