@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import {HttpClient} from "@angular/common/http";
 import {IDriver} from "./interfaces/drivers";
-import {map, Observable} from "rxjs";
+import {Observable} from "rxjs";
 
 @Injectable({
   providedIn: 'root'
@@ -14,8 +14,6 @@ export class DriversService {
   public loadDriversList(): Observable<IDriver[]>{
     const url = `${this.apiUrl}/drivers`;
 
-    return this.http.get(url).pipe(
-      map((res: any)=>res.items as IDriver[])
-    );
+    return this.http.get<IDriver[]>(url)
   }
 }

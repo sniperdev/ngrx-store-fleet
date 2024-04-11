@@ -1,6 +1,6 @@
 import {Injectable} from "@angular/core";
 import {HttpClient} from "@angular/common/http";
-import {map, Observable} from "rxjs";
+import {Observable} from "rxjs";
 import {IOrders} from "./interfaces/orders.interface";
 
 @Injectable({
@@ -15,9 +15,7 @@ export class OrdersService {
   public loadOrdersList(): Observable<IOrders[]>{
     const url = `${this.apiUrl}/orders`;
 
-    return this.http.get(url).pipe(
-      map((res: any)=>res.items as IOrders[])
-    );
+    return this.http.get<IOrders[]>(url)
   }
 
 }
