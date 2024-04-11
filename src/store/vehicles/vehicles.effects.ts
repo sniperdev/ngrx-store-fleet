@@ -21,7 +21,8 @@ export class VehiclesEffects {
           catchError((err) => of(VehiclesActions.loadVehiclesListError({ error: err })))
         )
       )
-    ));
+    )
+  );
 
   loadSingleVehicle$ = createEffect(() =>
     this.actions$.pipe(
@@ -30,8 +31,10 @@ export class VehiclesEffects {
         this.vehiclesService.loadSingleVehicle(action.id).pipe(
           map((res: IVehicle) => VehiclesActions.loadSingleVehicleSuccess({ payload: res })),
           catchError((err) => of(VehiclesActions.loadSingleVehicleError({ error: err })))
-      ))
-    ))
+        )
+      )
+    )
+  )
 
   deleteVehicle$ = createEffect(() =>
     this.actions$.pipe(
@@ -40,8 +43,10 @@ export class VehiclesEffects {
         this.vehiclesService.deleteVehicle(action.id).pipe(
           map(() => VehiclesActions.deleteVehicleSuccess()),
           catchError((err) => of(VehiclesActions.deleteVehicleError({ error: err })))
-      ))
-    ))
+        )
+      )
+    )
+  )
 
   deleteVehicleSuccess$ = createEffect(() =>
     this.actions$.pipe(

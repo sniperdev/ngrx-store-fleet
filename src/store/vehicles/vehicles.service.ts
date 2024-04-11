@@ -6,7 +6,6 @@ import {IVehicle} from "./interfaces/vehicles.interface";
 @Injectable({
   providedIn: 'root'
 })
-
 export class VehiclesService{
   private apiUrl = 'http://localhost:8080';
 

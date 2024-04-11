@@ -16,4 +16,17 @@ export class DriversService {
 
     return this.http.get<IDriver[]>(url)
   }
+
+  public loadSingleDriver(id: string): Observable<IDriver>{
+    const url = `${this.apiUrl}/drivers/${id}`
+
+    return this.http.get<IDriver>(url);
+  }
+
+  public deleteDriver(id: string): Observable<any>{
+    const url: string = `${this.apiUrl}/drivers/delete/${id}`;
+
+    return this.http.delete(url);
+  }
 }
+

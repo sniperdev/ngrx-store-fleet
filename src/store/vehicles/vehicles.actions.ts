@@ -53,7 +53,3 @@ export const deleteVehicleError = createAction(
   '[Vehicles] Delete Vehicle Error',
   props<{ error: HttpErrorResponse }>()
 )
-
-export const reloadVehiclesList = createAction(
-  "[Vehicles] Reload Vehicles List"
-)

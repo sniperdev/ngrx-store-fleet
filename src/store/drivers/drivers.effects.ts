@@ -21,5 +21,37 @@ export class DriversEffects{
           catchError((err) => of(DriversActions.loadDriversListError({ error: err })))
         )
       )
-    ));
+    )
+  );
+
+  loadSingleDriver$ = createEffect(()=>
+    this.actions$.pipe(
+      ofType(DriversActions.loadSingleDriver),
+      switchMap((action)=>
+        this.driversService.loadSingleDriver(action.id).pipe(
+          map((res: IDriver) => DriversActions.loadSingleDriverSuccess({ payload: res })),
+          catchError((err) => of(DriversActions.loadSingleDriverError({ error: err })))
+        )
+      )
+    )
+  )
+
+  deleteDriver$ = createEffect(() =>
+    this.actions$.pipe(
+      ofType(DriversActions.deleteDriver),
+      switchMap((action) =>
+        this.driversService.deleteDriver(action.id).pipe(
+          map(()=> DriversActions.deleteDriverSuccess()),
+          catchError((err) => of(DriversActions.deleteDriverError({ error: err })))
+        )
+      )
+    )
+  )
+
+  deleteDriverSucces$ = createEffect(() =>
+    this.actions$.pipe(
+      ofType(DriversActions.deleteDriverSuccess),
+      map(() => DriversActions.loadDriversList())
+    )
+  )
 }

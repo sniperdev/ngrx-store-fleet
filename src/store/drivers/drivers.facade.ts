@@ -11,10 +11,20 @@ import {IDriver} from "./interfaces/drivers";
   providedIn: 'root'
 })
 export class DriversFacade {
-  public data$: Observable<IDriver[]> = this.store.select(DriversSelectors.selectItems);
-  public loading$: Observable<boolean> = this.store.select(DriversSelectors.selectLoading);
-  public success$: Observable<boolean> = this.store.select(DriversSelectors.selectSuccess);
-  public error$: Observable<HttpErrorResponse | null> = this.store.select(DriversSelectors.selectError);
+  public driversData$: Observable<IDriver[]> = this.store.select(DriversSelectors.selectDriversItems);
+  public driversLoading$: Observable<boolean> = this.store.select(DriversSelectors.selectDriversLoading);
+  public driversSuccess$: Observable<boolean> = this.store.select(DriversSelectors.selectDriversSuccess);
+  public driversError$: Observable<HttpErrorResponse | null> = this.store.select(DriversSelectors.selectDriversError);
+
+  public singleDriverData$: Observable<IDriver | null> = this.store.select(DriversSelectors.selectSingleDriver);
+  public singleDriverLoading$: Observable<boolean> = this.store.select(DriversSelectors.selectSingleDriverLoading);
+  public singleDriverSuccess$: Observable<boolean> = this.store.select(DriversSelectors.selectSingleDriverSuccess);
+  public singleDriverError$: Observable<HttpErrorResponse | null> = this.store.select(DriversSelectors.selectSingleDriverError);
+
+
+  public driverDeleteLoading$: Observable<boolean> = this.store.select(DriversSelectors.selectDriversDeleteLoading);
+  public driverDeleteSuccess$: Observable<boolean> = this.store.select(DriversSelectors.selectDriversDeleteSuccess);
+  public driverDeleteError$: Observable<HttpErrorResponse | null> = this.store.select(DriversSelectors.selectDriversDeleteError);
 
   constructor(private store: Store<IAppState>) { }
 
@@ -24,5 +34,17 @@ export class DriversFacade {
 
   public clearDriversList(): void {
     this.store.dispatch(DriversActions.loadDriversListClear());
+  }
+
+  public loadSingleDriver(id: string): void {
+    this.store.dispatch(DriversActions.loadSingleDriver({id}));
+  }
+
+  public clearSingleVehicle(): void {
+    this.store.dispatch(DriversActions.loadSingleDriverClear());
+  }
+
+  public deleteVehicle(id: string): void {
+    this.store.dispatch(DriversActions.deleteDriver({id}));
   }
 }

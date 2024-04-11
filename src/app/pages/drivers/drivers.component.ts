@@ -8,8 +8,8 @@ import {FilesDownloadServiceService} from "../../shared/services/files-download-
   styleUrls: ['./drivers.component.scss']
 })
 export class DriversComponent implements OnInit, OnDestroy{
-  protected drivers$ = this.driversFacade.data$;
-  protected loading$ = this.driversFacade.loading$;
+  protected drivers$ = this.driversFacade.driversData$;
+  protected loading$ = this.driversFacade.driversLoading$;
 
   constructor(private driversFacade: DriversFacade, private filesDownloadService: FilesDownloadServiceService) {}
 
