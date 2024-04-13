@@ -1,6 +1,8 @@
 import {Component, OnDestroy, OnInit} from '@angular/core';
 import { DriversFacade } from 'src/store/drivers/drivers.facade';
 import {FilesDownloadServiceService} from "../../shared/services/files-download-service.service";
+import {Observable} from "rxjs";
+import {IDriver} from "../../../store/drivers/interfaces/drivers";
 
 @Component({
   selector: 'app-drivers',
@@ -8,8 +10,8 @@ import {FilesDownloadServiceService} from "../../shared/services/files-download-
   styleUrls: ['./drivers.component.scss']
 })
 export class DriversComponent implements OnInit, OnDestroy{
-  protected drivers$ = this.driversFacade.driversData$;
-  protected loading$ = this.driversFacade.driversLoading$;
+  protected drivers$: Observable<IDriver[]> = this.driversFacade.driversData$;
+  protected loading$: Observable<boolean> = this.driversFacade.driversLoading$;
 
   constructor(private driversFacade: DriversFacade, private filesDownloadService: FilesDownloadServiceService) {}
 

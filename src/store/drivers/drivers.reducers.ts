@@ -69,37 +69,47 @@ export const driversReducer = createReducer(
     DriversActions.loadDriversList,
     state =>({
       ...state,
-      data: [],
-      loading: true,
-      success: false,
-      error: null,
+      list: {
+        items: [],
+        loading: true,
+        success: false,
+        error: null,
+      },
     })
   ),
   on(
     DriversActions.loadDriversListSuccess,
     (state, action) => ({
       ...state,
-      data: action.payload,
-      loading: false,
-      success: true,
+      list: {
+        ...state.list,
+        items: action.payload,
+        loading: false,
+        success: true,
+      }
     })
   ),
   on(
     DriversActions.loadDriversListError,
     (state, action) => ({
       ...state,
-      loading: false,
-      error: action.error,
+      list: {
+        ...state.list,
+        loading: false,
+        error: action.error
+      }
     })
   ),
   on(
     DriversActions.loadDriversListClear,
     state => ({
       ...state,
-      data: [],
-      loading: false,
-      success: false,
-      error: null,
+      list: {
+        items: [],
+        loading: false,
+        success: false,
+        error: null,
+      }
     })
   ),
 
