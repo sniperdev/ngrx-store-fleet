@@ -6,22 +6,57 @@ import {createSelector} from "@ngrx/store";
 export const selectOrders = (state: IAppState) => state.orders;
 
 
-export const selectItems = createSelector(
+export const selectOrdersItems = createSelector(
   selectOrders,
-  (state: IOrdersState) => state.data
+  (state: IOrdersState) => state.list.items
 );
 
-export const selectLoading = createSelector(
+export const selectOrdersLoading = createSelector(
   selectOrders,
-  (state: IOrdersState) => state.loading
+  (state: IOrdersState) => state.list.loading
 );
 
-export const selectSuccess = createSelector(
+export const selectOrdersSuccess = createSelector(
   selectOrders,
-  (state: IOrdersState) => state.success
+  (state: IOrdersState) => state.list.success
 );
 
-export const selectError = createSelector(
+export const selectOrdersError = createSelector(
   selectOrders,
-  (state: IOrdersState) => state.error
+  (state: IOrdersState) => state.list.error
+);
+
+export const selectSingleOrder = createSelector(
+  selectOrders,
+  (state: IOrdersState) => state.details.item
+);
+
+export const selectSingleOrderLoading = createSelector(
+  selectOrders,
+  (state: IOrdersState) => state.details.loading
+);
+
+export const selectSingleOrderSuccess = createSelector(
+  selectOrders,
+  (state: IOrdersState) => state.details.success
+);
+
+export const selectSingleOrderError = createSelector(
+  selectOrders,
+  (state: IOrdersState) => state.details.error
+);
+
+export const selectOrderDeleteLoading = createSelector(
+  selectOrders,
+  (state: IOrdersState) => state.delete.loading
+);
+
+export const selectOrderDeleteSuccess = createSelector(
+  selectOrders,
+  (state: IOrdersState) => state.delete.success
+);
+
+export const selectOrderDeleteError = createSelector(
+  selectOrders,
+  (state: IOrdersState) => state.delete.error
 );

@@ -4,7 +4,7 @@ interface OrderStatus {
   completed: "Completed";
 }
 
-export interface IOrders {
+export interface IOrder {
   id: string;
   pickupLocation: string;
   deliveryLocation: string;
