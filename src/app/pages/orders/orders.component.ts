@@ -7,8 +7,8 @@ import {OrdersFacade} from "../../../store/orders/orders.facade";
   styleUrls: ['./orders.component.scss']
 })
 export class OrdersComponent implements OnInit, OnDestroy{
-  protected orders$ = this.ordersFacade.data$;
-  protected loading$ = this.ordersFacade.loading$;
+  protected orders$ = this.ordersFacade.ordersData$;
+  protected loading$ = this.ordersFacade.ordersLoading$;
 
   constructor(private ordersFacade: OrdersFacade) {}
 

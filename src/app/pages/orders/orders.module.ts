@@ -4,18 +4,22 @@ import { OrdersComponent } from './orders.component';
 import {OrdersRoutingModule} from "./orders-routing.module";
 import {ProgressBarModule} from "primeng/progressbar";
 import {SharedModule} from "../../shared/shared.module";
+import { OrdersDetailsComponent } from './components/orders-details/orders-details.component';
+import {ButtonModule} from "primeng/button";
 
 
 
 @NgModule({
   declarations: [
-    OrdersComponent
+    OrdersComponent,
+    OrdersDetailsComponent
   ],
   imports: [
     CommonModule,
     OrdersRoutingModule,
     ProgressBarModule,
-    SharedModule
+    SharedModule,
+    ButtonModule
   ]
 })
 export class OrdersModule { }
