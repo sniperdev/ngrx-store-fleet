@@ -15,10 +15,14 @@ import {DriversEffects} from "../store/drivers/drivers.effects";
 import {ordersReducer} from "../store/orders/orders.reducers";
 import {OrdersEffects} from "../store/orders/orders.effects";
 import {ConfirmationService} from "primeng/api";
+import { DriversDetailsComponent } from './pages/drivers/components/drivers-details/drivers-details.component';
+import {ButtonModule} from "primeng/button";
+import {ProgressBarModule} from "primeng/progressbar";
 
 @NgModule({
   declarations: [
     AppComponent,
+    DriversDetailsComponent,
   ],
   imports: [
     BrowserModule,
@@ -36,6 +40,8 @@ import {ConfirmationService} from "primeng/api";
       maxAge: 25,
       // logOnly: environment.production
     }),
+    ButtonModule,
+    ProgressBarModule,
 
   ],
   providers: [SharedModule, ConfirmationService],

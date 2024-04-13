@@ -40,11 +40,11 @@ export class DriversFacade {
     this.store.dispatch(DriversActions.loadSingleDriver({id}));
   }
 
-  public clearSingleVehicle(): void {
+  public clearSingleDriver(): void {
     this.store.dispatch(DriversActions.loadSingleDriverClear());
   }
 
-  public deleteVehicle(id: string): void {
+  public deleteDriver(id: string): void {
     this.store.dispatch(DriversActions.deleteDriver({id}));
   }
 }
