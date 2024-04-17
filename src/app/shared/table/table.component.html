@@ -10,7 +10,7 @@
   <ng-template pTemplate="body" let-rowData let-columns="columns">
     <tr [pEditableRow]="rowData">
       <td *ngFor="let col of columns">
-        {{ rowData[col.field] }}
+        {{ rowData[col.field] | truncate }}
       </td>
       <td>
         <button pButton icon="pi pi-external-link" class="p-button-rounded p-button-primary m-2" (click)="openDetailsPage(rowData.id)"></button>
