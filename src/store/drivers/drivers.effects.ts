@@ -48,10 +48,22 @@ export class DriversEffects{
     )
   )
 
-  deleteDriverSucces$ = createEffect(() =>
+  deleteDriverSuccess$ = createEffect(() =>
     this.actions$.pipe(
       ofType(DriversActions.deleteDriverSuccess),
       map(() => DriversActions.loadDriversList())
+    )
+  )
+
+  updateDriver$ = createEffect(() =>
+    this.actions$.pipe(
+      ofType(DriversActions.updateDriver),
+      switchMap((action) =>
+        this.driversService.updateDriver(action.id, action.driver).pipe(
+          map(() => DriversActions.updateDriverSuccess()),
+          catchError((err) => of(DriversActions.updateDriverError({ error: err })))
+        )
+      )
     )
   )
 }

@@ -28,5 +28,11 @@ export class DriversService {
 
     return this.http.delete(url);
   }
+
+  public updateDriver(id: string, driver: IDriver): Observable<any>{
+    const url: string = `${this.apiUrl}/drivers/update/${id}`;
+
+    return this.http.put(url, driver);
+  }
 }
 

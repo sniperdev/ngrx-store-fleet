@@ -60,3 +60,18 @@ export const selectDriversDeleteError = createSelector(
   selectDrivers,
   (state: IDriverState) => state.delete.error
 );
+
+export const selectDriversUpdateLoading = createSelector(
+  selectDrivers,
+  (state: IDriverState) => state.update.loading
+);
+
+export const selectDriversUpdateSuccess = createSelector(
+  selectDrivers,
+  (state: IDriverState) => state.update.success
+);
+
+export const selectDriversUpdateError = createSelector(
+  selectDrivers,
+  (state: IDriverState) => state.update.error
+);

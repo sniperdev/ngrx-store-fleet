@@ -54,3 +54,17 @@ export const deleteDriverError = createAction(
   '[Drivers] Delete Driver Error',
   props<{ error: HttpErrorResponse }>()
 )
+
+export const updateDriver = createAction(
+  '[Drivers] Update Driver',
+  props<{ id: string, driver: IDriver }>()
+)
+
+export const updateDriverSuccess = createAction(
+  '[Drivers] Update Driver Success',
+)
+
+export const updateDriverError = createAction(
+  '[Drivers] Update Driver Error',
+  props<{ error: HttpErrorResponse }>()
+)

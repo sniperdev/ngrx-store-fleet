@@ -193,4 +193,38 @@ export const driversReducer = createReducer(
       }
     })
   ),
+
+
+  on(
+    DriversActions.updateDriver,
+    state => ({
+      ...state,
+      update: {
+        ...state.delete,
+        loading: true,
+      }
+    })
+  ),
+  on(
+    DriversActions.updateDriverSuccess,
+    state => ({
+      ...state,
+      update: {
+        ...state.delete,
+        loading: false,
+        success: true,
+      }
+    })
+  ),
+  on(
+    DriversActions.updateDriverError,
+    (state, action) => ({
+      ...state,
+      update: {
+        ...state.delete,
+        loading: false,
+        error: action.error,
+      }
+    })
+  ),
 )

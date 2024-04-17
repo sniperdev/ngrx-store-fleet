@@ -26,6 +26,11 @@ export class DriversFacade {
   public driverDeleteSuccess$: Observable<boolean> = this.store.select(DriversSelectors.selectDriversDeleteSuccess);
   public driverDeleteError$: Observable<HttpErrorResponse | null> = this.store.select(DriversSelectors.selectDriversDeleteError);
 
+
+  public driverUpdateLoading$: Observable<boolean> = this.store.select(DriversSelectors.selectDriversUpdateLoading);
+  public driverUpdateSuccess$: Observable<boolean> = this.store.select(DriversSelectors.selectDriversUpdateSuccess);
+  public driverUpdateError$: Observable<HttpErrorResponse | null> = this.store.select(DriversSelectors.selectDriversUpdateError);
+
   constructor(private store: Store<IAppState>) { }
 
   public loadDriversList(): void {
@@ -46,5 +51,9 @@ export class DriversFacade {
 
   public deleteDriver(id: string): void {
     this.store.dispatch(DriversActions.deleteDriver({id}));
+  }
+
+  public updateDriver(id: string, driver: IDriver): void {
+    this.store.dispatch(DriversActions.updateDriver({id, driver}));
   }
 }
