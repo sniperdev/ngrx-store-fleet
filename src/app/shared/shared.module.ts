@@ -15,6 +15,7 @@ import {InputTextModule} from "primeng/inputtext";
 import {FormsModule} from "@angular/forms";
 import {RippleModule} from "primeng/ripple";
 import {ConfirmPopupModule} from "primeng/confirmpopup";
+import {TruncatePipe} from "./pipes/truncate.pipe";
 
 
 const COMPONENTS = [NavbarComponent, SidebarComponent, CardComponent];
@@ -23,6 +24,7 @@ const COMPONENTS = [NavbarComponent, SidebarComponent, CardComponent];
     COMPONENTS,
     TableComponent,
     PagecardComponent,
+    TruncatePipe
   ],
   imports: [
     CommonModule,
@@ -42,6 +44,7 @@ const COMPONENTS = [NavbarComponent, SidebarComponent, CardComponent];
     COMPONENTS,
     TableComponent,
     PagecardComponent,
+    TruncatePipe
   ]
 })
 export class SharedModule {}
