@@ -9,7 +9,7 @@ export type FileFormat = "pdf" | "xlsx" | "docx" | "xml" | "doc" | "json"
 @Injectable({
   providedIn: 'root'
 })
-export class FilesDownloadServiceService {
+export class FilesDownloadService {
 
   constructor(private http: HttpClient) { }
 

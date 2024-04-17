@@ -1,6 +1,6 @@
 import {Component, Input} from '@angular/core';
 import {Observable} from "rxjs";
-import {FilesDownloadServiceService} from "../services/files-download-service.service";
+import {FilesDownloadService} from "../services/files-download.service";
 
 @Component({
   selector: 'app-pagecard',
@@ -15,7 +15,7 @@ export class PagecardComponent {
   @Input() apiUrl!: string;
 
 
-  constructor(private filesDownloadService: FilesDownloadServiceService) {
+  constructor(private filesDownloadService: FilesDownloadService) {
   }
 
   protected downloadFilePdf(){

@@ -50,7 +50,6 @@ export class TableComponent<T extends object> {
         this.vehiclesFacade.deleteVehicle(id);
       },
       reject: () => {
-
       }
     });
   }
