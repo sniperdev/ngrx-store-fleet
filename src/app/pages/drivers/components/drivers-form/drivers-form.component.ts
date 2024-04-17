@@ -1,9 +1,9 @@
-import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
+import {Component, EventEmitter, Input, OnDestroy, OnInit, Output} from '@angular/core';
 import {FormBuilder, FormControl, FormGroup, Validators} from "@angular/forms";
 import {IDriver} from "../../../../../store/drivers/interfaces/drivers";
 import {ValidationService} from "../../../../shared/services/validation.service";
 import {DriversFacade} from "../../../../../store/drivers/drivers.facade";
-import {Observable, startWith} from "rxjs";
+import {startWith, Subject, takeUntil} from "rxjs";
 
 
 export type DriverFormGroup = FormGroup<{
@@ -22,12 +22,13 @@ export type DriverFormControlType = DriverFormGroup['controls'];
   templateUrl: './drivers-form.component.html',
   styleUrls: ['./drivers-form.component.scss']
 })
-export class DriversFormComponent implements OnInit{
+export class DriversFormComponent implements OnInit, OnDestroy{
   @Input() driver!: IDriver | null;
   @Output() changeShowEdit = new EventEmitter<boolean>();
   protected formGroup!: DriverFormGroup;
   protected loading$ = this.driversFacade.driverUpdateLoading$.pipe(startWith(false));
   protected success$ = this.driversFacade.driverUpdateSuccess$;
+  private destroy = new Subject<boolean>();
 
   constructor(
     private fb: FormBuilder,
@@ -39,14 +40,12 @@ export class DriversFormComponent implements OnInit{
     if(this.driver){
       this.driversFacade.updateDriver(this.driver.id, this.formGroup.value as IDriver);
     }
-    this.success$.subscribe(success => {
+    this.success$.pipe(takeUntil(this.destroy)).subscribe(success => {
       if(success){
         this.changeShowEdit.emit(false)
       }
     })
   }
-
-
 
   ngOnInit() {
     if(this.driver) {
@@ -59,5 +58,9 @@ export class DriversFormComponent implements OnInit{
         drivingLicenseNumber: this.fb.nonNullable.control(this.driver.drivingLicenseNumber, Validators.required),
       })
     }
+  }
+  ngOnDestroy() {
+    this.destroy.next(true);
+    this.destroy.unsubscribe();
   }
 }
