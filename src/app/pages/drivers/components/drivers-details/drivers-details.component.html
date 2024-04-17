@@ -18,7 +18,7 @@
       </div>
     </ng-container>
     <ng-template #showEditComponent>
-      <app-drivers-form [driver]="driver$ | async"></app-drivers-form>
+      <app-drivers-form [driver]="driver$ | async" (changeShowEdit)="onChangeShowEdit($event)"></app-drivers-form>
     </ng-template>
   </div>
 </app-card>

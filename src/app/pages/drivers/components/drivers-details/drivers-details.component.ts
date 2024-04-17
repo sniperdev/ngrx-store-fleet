@@ -19,6 +19,10 @@ export class DriversDetailsComponent implements OnInit{
     private route: ActivatedRoute, private location: Location,
   ) {}
 
+  protected onChangeShowEdit(event: boolean){
+    this.showEdit = event;
+  }
+
   protected returnToList(){
     this.driversFacade.clearSingleDriver();
     this.location.back();

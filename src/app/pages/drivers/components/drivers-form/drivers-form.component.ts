@@ -1,8 +1,9 @@
-import {Component, Input, OnInit} from '@angular/core';
+import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import {FormBuilder, FormControl, FormGroup, Validators} from "@angular/forms";
 import {IDriver} from "../../../../../store/drivers/interfaces/drivers";
 import {ValidationService} from "../../../../shared/services/validation.service";
 import {DriversFacade} from "../../../../../store/drivers/drivers.facade";
+import {Observable, startWith} from "rxjs";
 
 
 export type DriverFormGroup = FormGroup<{
@@ -22,8 +23,11 @@ export type DriverFormControlType = DriverFormGroup['controls'];
   styleUrls: ['./drivers-form.component.scss']
 })
 export class DriversFormComponent implements OnInit{
-  protected formGroup!: DriverFormGroup;
   @Input() driver!: IDriver | null;
+  @Output() changeShowEdit = new EventEmitter<boolean>();
+  protected formGroup!: DriverFormGroup;
+  protected loading$ = this.driversFacade.driverUpdateLoading$.pipe(startWith(false));
+  protected success$ = this.driversFacade.driverUpdateSuccess$;
 
   constructor(
     private fb: FormBuilder,
@@ -32,7 +36,17 @@ export class DriversFormComponent implements OnInit{
   ) {}
 
   protected submitForm(): void{
+    if(this.driver){
+      this.driversFacade.updateDriver(this.driver.id, this.formGroup.value as IDriver);
+    }
+    this.success$.subscribe(success => {
+      if(success){
+        this.changeShowEdit.emit(false)
+      }
+    })
   }
+
+
 
   ngOnInit() {
     if(this.driver) {

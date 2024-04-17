@@ -29,5 +29,13 @@
     <input pInputText id="drivingLicenseNumber" formControlName="drivingLicenseNumber" />
     <small>{{validationService.getErrorMessage(formGroup.controls.drivingLicenseNumber)}}</small>
   </span>
-  <p-button label="Submit" type="submit"></p-button>
+
+  <p-button type="submit" [disabled]="!((loading$ | async) !== null && !(loading$ | async))">
+    <ng-container *ngIf="loading$ | async; else submit">
+      Loading...
+    </ng-container>
+    <ng-template #submit>
+      Submit
+    </ng-template>
+  </p-button>
 </form>
