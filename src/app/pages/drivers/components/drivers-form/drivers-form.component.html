@@ -1,0 +1,33 @@
+<form (ngSubmit)="submitForm()" [formGroup]="formGroup" class="flex flex-column">
+  <span class="flex flex-column">
+    <label for="firstName">First name</label>
+    <input pInputText id="firstName" formControlName="firstName" />
+    <small>{{validationService.getErrorMessage(formGroup.controls.firstName)}}</small>
+    </span>
+  <span class="flex flex-column">
+    <label for="lastName">Last name</label>
+    <input pInputText id="lastName" formControlName="lastName" />
+    <small>{{validationService.getErrorMessage(formGroup.controls.lastName)}}</small>
+  </span>
+  <span class="flex flex-column">
+    <label for="phoneNumber">Phone number</label>
+    <input pInputText id="phoneNumber" formControlName="phoneNumber" />
+    <small>{{validationService.getErrorMessage(formGroup.controls.phoneNumber)}}</small>
+  </span>
+  <span class="flex flex-column">
+    <label for="email">Email</label>
+    <input pInputText id="email" formControlName="email" />
+    <small>{{validationService.getErrorMessage(formGroup.controls.email)}}</small>
+  </span>
+  <span class="flex flex-column">
+    <label for="birthDate">Birth date</label>
+    <input pInputText id="birthDate" formControlName="birthDate" />
+    <small>{{validationService.getErrorMessage(formGroup.controls.birthDate)}}</small>
+  </span>
+  <span class="mb-4 flex flex-column">
+    <label for="drivingLicenseNumber">Driving license number</label>
+    <input pInputText id="drivingLicenseNumber" formControlName="drivingLicenseNumber" />
+    <small>{{validationService.getErrorMessage(formGroup.controls.drivingLicenseNumber)}}</small>
+  </span>
+  <p-button label="Submit" type="submit"></p-button>
+</form>

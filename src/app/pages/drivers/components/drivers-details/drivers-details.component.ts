@@ -12,7 +12,12 @@ export class DriversDetailsComponent implements OnInit{
   protected driver$ = this.driversFacade.singleDriverData$;
   protected loading$ = this.driversFacade.singleDriverLoading$
 
-  constructor(private driversFacade: DriversFacade, private route: ActivatedRoute, private location: Location) {}
+  protected showEdit = false;
+
+  constructor(
+    private driversFacade: DriversFacade,
+    private route: ActivatedRoute, private location: Location,
+  ) {}
 
   protected returnToList(){
     this.driversFacade.clearSingleDriver();

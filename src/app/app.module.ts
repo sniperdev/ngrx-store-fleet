@@ -18,6 +18,7 @@ import {ConfirmationService} from "primeng/api";
 import { DriversDetailsComponent } from './pages/drivers/components/drivers-details/drivers-details.component';
 import {ButtonModule} from "primeng/button";
 import {ProgressBarModule} from "primeng/progressbar";
+import {DriversModule} from "./pages/drivers/drivers.module";
 
 @NgModule({
   declarations: [
@@ -42,6 +43,7 @@ import {ProgressBarModule} from "primeng/progressbar";
     }),
     ButtonModule,
     ProgressBarModule,
+    DriversModule,
 
   ],
   providers: [SharedModule, ConfirmationService],
