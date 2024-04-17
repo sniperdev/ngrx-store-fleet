@@ -60,7 +60,7 @@ export class DriversEffects{
       ofType(DriversActions.updateDriver),
       switchMap((action) =>
         this.driversService.updateDriver(action.id, action.driver).pipe(
-          map(() => DriversActions.updateDriverSuccess()),
+          switchMap(() => [DriversActions.updateDriverSuccess(), DriversActions.loadSingleDriver({ id:action.id })]),
           catchError((err) => of(DriversActions.updateDriverError({ error: err })))
         )
       )
